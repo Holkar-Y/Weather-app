@@ -1,0 +1,153 @@
+/* hey i have created a weather app using html,css,js i ll give you the code..check karo..sahi galat dono points batao..proper analysis karo..kya improve karna chahiye...ok, if yes respond ok */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease;
+}
+.main{
+    min-height: 80%;
+    width: min(500px,70%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+}
+.section1{
+    height: 8%;
+    width: 90%;
+    display: grid;
+    border-radius: 20px;
+    grid-template-columns: 1fr auto auto;
+    border: 1px solid gray;
+    margin: 15px 0;
+}
+.location-btn{
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    padding:0 20px;
+    font-size:18px;
+}
+.input, .btn{
+    border: none;
+    background-color: transparent;
+}
+.input{
+    padding: 10px 20px;
+    font-size: 18px;
+}
+.input:focus{
+    outline: none;
+}
+.btn{
+    padding: 0 35px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.section2{
+    width: 90%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+.cityName{
+    font-size: 30px;
+}
+.section3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;
+    margin: 15px 0;
+}
+.div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 40px 10px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    transition: transform .2s ease;
+}
+.div:hover{
+ transform:translateX(-5px);
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.icon{
+    grid-row: span 2;
+    font-size: 30px;
+}
+.label{
+    font-size: 15px;
+}
+@media (max-width:674px) {
+    .div{
+        gap: 10px;
+        padding: 20px 8px;
+    }
+    .description{
+        gap: 0px;
+    }
+    .icon{
+        font-size: 20px;
+    }
+    .section3{
+        gap: 20px;
+    }
+    .section1{
+        grid-template-columns: 1fr 50px 50px;
+    }
+    .location-btn{
+        padding:0;
+    }
+    .input{
+        width:100%;
+        min-width:0;
+    }
+    .btn{
+        width:50px;
+        padding:0;
+    }
+}
+@media (max-width:460px){
+    .div{
+        gap: 10px;
+        padding: 10px 8px;
+    }
+    .section3{
+        grid-template-columns: 1fr;
+    }
+}
+.hidden{
+    display: none;
+}

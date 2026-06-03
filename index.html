@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <main class="main">
+            <section class="section1">
+                <input class="input" type="text" placeholder="Enter city">
+                <button class="btn" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="location-btn" type="button">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+            </section>
+
+            <section class="section2 hidden">
+                    <p class="cityName"><strong>City</strong></p>
+                    <p class="temp">--°C</p>
+                    <p class="feels">Feels like</p>
+            </section>
+
+            <section class="section3 hidden">
+                <div class="div1 div">
+                    <div class="icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <div class="description">
+                        <p class="max-temp">--°C</p>
+                        <p class="label">Max-temp.</p>
+                    </div>
+                    
+                </div>
+                <div class="div2 div">
+                    <div class="icon"><i class="fa-solid fa-temperature-arrow-down"></i></div>
+                    <div class="description">
+                        <p class="min-temp">--°C</p>
+                        <p class="label">Min-temp.</p>
+                    </div>
+                    
+                </div>
+                <div class="div3 div">
+                    <div class="icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="description">
+                        <p class="humidity">--%</p>
+                        <p class="label">Humidity</p>
+                    </div>
+                    
+                </div>
+                <div class="div4 div">
+                    <div class="icon"><i class="fa-solid fa-wind"></i></div>
+                    <div class="description">
+                        <p class="wind">--m/s</p>
+                        <p class="label">Wind</p>
+                    </div>
+                    
+                </div>
+            </section>
+
+        </main>
+    </div>
+<script src="https://kit.fontawesome.com/03a26d3ba3.js" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
