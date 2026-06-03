@@ -6,11 +6,12 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .container{
-    min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px 0;
 
     background-size: cover;
     background-position: center;
@@ -25,7 +26,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin: 10px 0;
 
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
