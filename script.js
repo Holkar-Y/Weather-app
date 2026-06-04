@@ -3,6 +3,7 @@ document.querySelector(".container").style.backgroundImage='url("https://images.
 const input=document.querySelector(".input");
 const btn=document.querySelector(".btn");
 const cityName=document.querySelector(".cityName");
+const error=document.querySelector(".error");
 const temp=document.querySelector(".temp");
 const feels=document.querySelector(".feels");
 const max_temp=document.querySelector(".max-temp");
@@ -10,17 +11,16 @@ const min_temp=document.querySelector(".min-temp");
 const humidity=document.querySelector(".humidity");
 const wind=document.querySelector(".wind");
 const locationBtn = document.querySelector(".location-btn");
-const hidden=document.querySelectorAll(".hidden");
-
 
 function get(){
     if(input.value.trim()===""){
-        alert("Please enter city");
+        error.innerText="*Please Enter City*"
         return;
     }
     else{
         getWeather(input.value);
         input.value="";
+        error.innerText="";
         document.querySelector(".section2").classList.remove("hidden");
         document.querySelector(".section3").classList.remove("hidden");
     }
@@ -34,67 +34,59 @@ btn.addEventListener("click",()=>{
     get();
 })
 
-
-
 locationBtn.addEventListener("click", () => {
-
     if(!navigator.geolocation){
-        alert("Geolocation is not supported");
+        error.innerText="Geolocation is not supported";
         return;
     }
-
     navigator.geolocation.getCurrentPosition(
         async (position) => {
-
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
 
             try{
                 const api_key = "9a56f84478867f089529fe90b6c76a06";
-
                 const url =
                 `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=metric`;
 
                 const response = await fetch(url);
                 const data = await response.json();
-
                 updateWeatherUI(data);
+                document.querySelector(".section2").classList.remove("hidden");
+                document.querySelector(".section3").classList.remove("hidden");
 
             }catch(error){
                 console.error(error);
-                alert("Unable to fetch weather");
-            }
-
+                error.innerText="*Unable to fetch weather*"
+            }error.innerText=""
         },
         () => {
-            alert("Location permission denied");
+            error.innerText="*Location permission denied*";
         }
-    );
+    );error.innerText="";
 });
-
-
 
 
 // https://pro.openweathermap.org/data/2.5/forecast/hourly?q={city name}&appid={API key}
 async function getWeather(city){
-    const api_key="9a56f84478867f089529fe90b6c76a06";
-    const url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`;
-
     let data;
     try{
+        const api_key="9a56f84478867f089529fe90b6c76a06";
+        const url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`;
+
         const response= await fetch(url);
         data= await response.json();
 
         if(data.cod=="404"){
-            alert("City not found!");
+            error.innerText="*City not found*";
             return;
         }
+        error.innerText="";
     }
     catch(error){
-        alert("Network Error");
-    }
+        error.innerText="*Network error*"
+    }error.innerText="";
 
-    console.log(data.weather[0].main)
     const weather= data.weather[0].main;
     if(weather==="Clear"){
         document.querySelector(".container").style.backgroundImage='url("https://images.unsplash.com/photo-1776242315240-ce7afa602e3b?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNsZWFyJTIwd2VhdGhlciUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D")';
