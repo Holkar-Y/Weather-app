@@ -11,6 +11,8 @@ const min_temp=document.querySelector(".min-temp");
 const humidity=document.querySelector(".humidity");
 const wind=document.querySelector(".wind");
 const locationBtn = document.querySelector(".location-btn");
+const section2=document.querySelector(".section2");
+const section3=document.querySelector(".section3");
 
 function get(){
     if(input.value.trim()===""){
@@ -21,8 +23,8 @@ function get(){
         getWeather(input.value);
         input.value="";
         error.innerText="";
-        document.querySelector(".section2").classList.remove("hidden");
-        document.querySelector(".section3").classList.remove("hidden");
+        section2.classList.remove("hidden");
+        section3.classList.remove("hidden");
     }
 }
 input.addEventListener("keydown",(e)=>{
@@ -52,8 +54,8 @@ locationBtn.addEventListener("click", () => {
                 const response = await fetch(url);
                 const data = await response.json();
                 updateWeatherUI(data);
-                document.querySelector(".section2").classList.remove("hidden");
-                document.querySelector(".section3").classList.remove("hidden");
+                section2.classList.remove("hidden");
+                section3.classList.remove("hidden");
 
             }catch(error){
                 console.error(error);
@@ -78,7 +80,7 @@ async function getWeather(city){
         data= await response.json();
 
         if(data.cod=="404"){
-            error.innerText="*City not found*";
+            error.innerText="*City not found*";            
             return;
         }
         error.innerText="";
